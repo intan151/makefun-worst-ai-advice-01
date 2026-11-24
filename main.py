@@ -22,6 +22,8 @@ def main() -> None:
         raise ValueError(
             f"ENTRY must be 1-140 non-blank characters, got {len(ENTRY)}"
         )
+    if "\n" in ENTRY:
+        raise ValueError("ENTRY must be a single line")
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(ENTRY, encoding="utf-8")
 
